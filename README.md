@@ -1,4 +1,3 @@
-Testing the CI pipeline for lab3 part 2
 # Lab 3 Part 2: Continuous Integration and Continuous Delivery (Jenkins)
 ## Objective   
 1. Get Familiar with Jenkins.
