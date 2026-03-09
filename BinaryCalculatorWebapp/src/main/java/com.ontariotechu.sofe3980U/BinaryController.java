@@ -17,22 +17,28 @@ public class BinaryController {
 	}
 	
 	@PostMapping("/")
-	public String result(@RequestParam(name="operand1", required=false, defaultValue="") String operand1,
-	@RequestParam(name="operator", required=false, defaultValue="") String operator ,
-	@RequestParam(name="operand2", required=false, defaultValue="") String operand2, Model model) {
+	public String getResult(@RequestParam(name="operand1") String operand1, @RequestParam(name="operator") String operator, @RequestParam(name="operand2") String operand2, Model model) {
 		model.addAttribute("operand1", operand1);
 		model.addAttribute("operator", operator);
 		model.addAttribute("operand2", operand2);
-		Binary number1=new Binary (operand1);
-		Binary number2=new Binary (operand2);
+		Binary number1=new Binary(operand1);
+		Binary number2=new Binary(operand2);
 		switch(operator)
 		{
 			case "+":
 				model.addAttribute("result", Binary.add(number1,number2).getValue());
 				return "result";
+			case "*":
+				model.addAttribute("result", Binary.multiply(number1,number2).getValue());
+				return "result";
+			case "|":
+				model.addAttribute("result", Binary.or(number1,number2).getValue());
+				return "result";
+			case "&":
+				model.addAttribute("result", Binary.and(number1,number2).getValue());
+				return "result";
 			default:
-				return "Error";
+				return "error";
 		}
 	}
-
 }
